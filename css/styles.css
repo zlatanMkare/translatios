@@ -1,0 +1,195 @@
+.sec-title {
+  padding: 40px 0;
+}
+a:hover {
+  text-decoration: none;
+}
+.btn {
+  border-radius: 30px;
+  padding: 20px 30px;
+}
+.auto-txt {
+  margin: auto;
+}
+@media (min-width: 768px) {
+  .row-flex {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.navbar-default {
+  background: linear-gradient(to right, #b24592, #f15f79);
+  border-color: transparent;
+}
+.navbar-default .navbar-nav .open a {
+  background: transparent;
+}
+.navbar-default .navbar-nav .open .dropdown-menu li a {
+  color: #666666 !important;
+  padding: 10px 20px;
+}
+.navbar-default .navbar-nav .open .dropdown-menu li a:hover {
+  background: #ea5c7c;
+}
+.navbar-default .navbar-nav .open .dropdown-menu li a:focus {
+  background: #ea5c7c;
+}
+.navbar-default .navbar-brand img {
+  margin-top: -18px;
+}
+.navbar-default #navbar .nav li a {
+  color: #fff;
+}
+#intro {
+  min-height: 100vh;
+  width: 100%;
+  background: #4ca1af;
+  /* fallback for old browsers */
+  background-image: linear-gradient(to right, #b24592, #f15f79), url(../img/hands.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+#intro .intro-heading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+}
+#intro .intro-heading span {
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 20px;
+}
+#intro .intro-heading h1 {
+  font-size: 4.8em;
+  line-height: 1.2;
+  font-weight: 300;
+  padding: 30px;
+  margin: 0;
+  color: #fff;
+}
+#intro .intro-heading .btn-get-started {
+  margin-top: 20px;
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  cursor: pointer;
+}
+#intro .want-to-learn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -75%);
+}
+#intro .want-to-learn h2 {
+  color: #fff;
+  padding: 10px 0 40px 0;
+}
+#intro .want-to-learn .card {
+  background-color: #fff;
+  margin: 0 5px;
+  text-align: center;
+  padding: 10px 0;
+  flex-basis: 30%;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+#intro .want-to-learn .card:hover {
+  transform: translateY(-2px);
+}
+#sec1 {
+  padding: 80px 0;
+}
+#sec1 .container .row img {
+  float: left;
+}
+#sec2 {
+  padding: 80px 0;
+  background-color: #f4f4f4;
+}
+#pricing {
+  padding: 0 0 100px 0;
+}
+#pricing .pricing-table {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+#pricing .pricing-table .pricing-header .pt-price {
+  font-family: "Oswald";
+  color: #4c4c4c;
+  font-size: 40px;
+  line-height: 70px;
+  font-weight: 400;
+  text-align: center;
+  padding: 10px 40px;
+}
+#pricing .pricing-table .pricing-header .pt-price small {
+  font-size: 13px;
+  color: #9a9a9a;
+  font-weight: 300;
+}
+#pricing .pricing-table .pricing-header .pt-name {
+  font-family: "Oswald";
+  padding: 10px 40px;
+  text-align: center;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 40px;
+  color: #4c4c4c;
+  border-top: 1px solid #f2f2f2;
+  border-bottom: 1px solid #f2f2f2;
+}
+#pricing .pricing-table .pricing-body ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#pricing .pricing-table .pricing-body ul li {
+  padding: 15px 25px;
+  margin: 0;
+  text-align: center;
+}
+#pricing .pricing-table .pricing-body ul li:nth-child(even) {
+  background-color: #fafafa;
+}
+#pricing .pricing-table .pricing-footer {
+  text-align: center;
+  padding: 15px 40px;
+  border-top: 1px solid #f2f2f2;
+}
+#pricing .pricing-table .pricing-footer .btn {
+  background-color: #db5681;
+  color: #fff;
+  padding: 15px 30px;
+}
+#call-to-action {
+  padding: 60px 0;
+  background-color: #f4f4f4;
+}
+#call-to-action .col-md-8 h4 {
+  float: left;
+  margin: 18px 20px;
+}
+@media (max-width: 425px) {
+  #intro .intro-heading h1 {
+    font-size: 2.8em;
+  }
+}
+.showcontent {
+  -webkit-transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  -ms-transition: opacity 0.5s ease-in-out;
+  -o-transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+  -webkit-transition-delay: .5s;
+  /* Safari */
+  transition-delay: .5s;
+}
+.hidecontent {
+  -webkit-transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  -ms-transition: opacity 0.5s ease-in-out;
+  -o-transition: opacity 0.5s ease-in-out;
+  opacity: 0;
+}

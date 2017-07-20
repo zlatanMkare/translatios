@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="plan your sms's. Send when you need. Easy to use">
+    <meta name="author" content="site made by yours truly">
+
+    <title>Language Hub</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Custom styles for this template -->
+    <link href="./css/styles.css" rel="stylesheet">
+    <link href="./css/quiz.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">
+            <img src="./img/langhublogo.png">
+          </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse pull-right">
+          <ul class="nav navbar-nav">
+            <li>
+                <a class="dropdown-toggle choose-lng" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  Site Language
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <li><a href="#">English</a></li>
+                  <li><a href="#">French</a></li>
+                  <li><a href="#">Spanish</a></li>
+                  <li><a href="#">German</a></li>
+                </ul>
+            </li>
+            <li><a href="#call-to-action" class="smooth">Log In</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <section id="app" class="quiz-section">
+      <div class="container">
+        <div class="row">
+          <div class="text-center sec-title">
+            <h2 v-html="quiz.title"></h2>
+          </div>
+          <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+              <div class="w3-card-4" v-cloak>
+                <header class="w3-container w3-light-grey">
+                </header>
+                <div v-for="(question, index) in quiz.questions">
+                  <div class="w3-container" v-show="index === questionIndex">
+                    <h3 class="text-center" v-html="question.text"></h3>
+                    <hr>
+                    <div class="col-xs-6 col-md-4" v-for="response in question.responses">
+                      <label class="thumbnail">
+                        <img class="img-responsive" :src="response.imageLink" >
+                          <div class="input">
+                            <input type="radio" :value="response.correct" v-bind:name="index" v-model="userResponses[index]">
+                            <span v-html="response.text"></span>
+                          </div>
+                      </label>
+                    </div>
+                    <span style="position:absolute; bottom: 10px; left: 30px;">Question <strong>{{ index + 1 }}</strong> of <strong>{{ quiz.questions.length }}</strong></span>
+                  </div>
+                </div>
+                <div class="results text-center" v-show="questionIndex === quiz.questions.length">
+                    <h2 v-show="score() > 4">Congratulations <strong>+ {{ score() }}pts</strong></h2>
+                    <h2 v-show="score() <= 4">
+                      That's pretty bad! <strong>+ {{ score() }}pts</strong>
+                    </h2>
+                    <br>
+                    <h2><strong>You have scored: {{ score() }} / {{ quiz.questions.length }}</strong></h2>
+                </div>
+                <div class="quiz-buttons w3-block w3-dark-grey">
+                    <a href="" class="btn btn-lg btn-primary" v-show="questionIndex === quiz.questions.length">Retake</a>
+                    <button class="pull-right btn btn-lg btn-success" v-show="questionIndex < quiz.questions.length" v-on:click="next">Next</button>
+                    <button class="pull-right btn btn-lg btn-default" v-show="questionIndex === quiz.questions.length" v-on:click="next">Continue To Profile</button>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <script src="./js/main.js"></script>
+
+    <script>
+         $( document ).ready(function() {
+            Vue.config.devtools = true
+             // Quiz Questions
+            var quiz = {
+              title: 'Beginners Test Quiz',
+              questions: [
+                {
+                  text: "Select Translation of A Boy",
+                  responses: [
+                    { 
+                      imageLink: 'https://d2pur3iezf4d1j.cloudfront.net/images/c7162f9c2561a5d324ade00b336ce3f4',
+                      text: 'ein Apfel',
+                    }, 
+                    { 
+                      imageLink: 'https://d2pur3iezf4d1j.cloudfront.net/images/dc5c68ee0133a3294b9f5ad7ae481712',
+                      text: 'ein Junge',
+                      correct: true
+                    },
+                    { 
+                      imageLink: 'https://d2pur3iezf4d1j.cloudfront.net/images/cfd6ac49dca2c518ce9da14a23347092',
+                      text: 'eine Frau', 
+                    }, 
+                  ]
+                }, 
+                {
+                  text: "Select Translation of a Woman",
+                  responses: [
+                    { 
+                      imageLink: 'https://d2pur3iezf4d1j.cloudfront.net/images/af5dfab3daf7a1626450b4074a0b18b6',
+                      text: 'ein Mann'
+                    }, 
+                    { 
+                      imageLink: 'https://d2pur3iezf4d1j.cloudfront.net/images/c1a0474727e97b1aa8fb1b0c25552ecf',
+                      text: 'ein Mädchen'
+                    },
+                    { 
+                      imageLink: 'https://d2pur3iezf4d1j.cloudfront.net/images/cfd6ac49dca2c518ce9da14a23347092',
+                      text: 'eine Frau', 
+                      correct: true
+                    }, 
+                  ]
+                },
+                {
+                  text: "Select Translation of a Car",
+                  responses: [
+                    { 
+                      imageLink: 'http://oi41.tinypic.com/2mdh1z5.jpg',
+                      text: 'einen Wagen',
+                      correct: true
+                    }, 
+                    { 
+                      imageLink: 'http://oi41.tinypic.com/qxpjiu.jpg',
+                      text: 'ein Flugzeug',
+                    },
+                    { 
+                      imageLink: 'http://oi44.tinypic.com/5vxd2c.jpg',
+                      text: 'ein Fahrrad', 
+                    }, 
+                  ]
+                },
+                {
+                  text: "Select Translation of a Cat",
+                  responses: [
+                    { 
+                      imageLink: 'http://oi43.tinypic.com/14j3ryv.jpg',
+                      text: 'ein Löwe'
+                    }, 
+                    { 
+                      imageLink: 'http://oi43.tinypic.com/1zvsund.jpg',
+                      text: 'ein Hund'
+                    },
+                    { 
+                      imageLink: 'http://oi46.tinypic.com/29opqua.jpg',
+                      text: 'eine Katze', 
+                      correct: true
+                    }, 
+                  ]
+                },
+                {
+                  text: "What does Wie gehts dir? mean",
+                  responses: [
+                    { 
+                      text: 'How are you?',
+                       correct: true
+                    }, 
+                    { 
+                      text: 'Where are you?'
+                    },
+                    { 
+                      text: 'Who are you?', 
+                    }, 
+                  ]
+                },
+                {
+                  text: "What is the right translation of Wie viel kostet das?",
+                  responses: [
+                    { 
+                      text: 'How much does it cost?',
+                       correct: true
+                    }, 
+                    { 
+                      text: 'For how many people?'
+                    },
+                    { 
+                      text: 'Where are you from?', 
+                    }, 
+                  ]
+                },
+                {
+                  text: "What is the right translation of Wessen?",
+                  responses: [
+                    { 
+                      text: 'What'
+                    }, 
+                    { 
+                      text: 'Whose',
+                      correct: true
+                    },
+                    { 
+                      text: 'Who', 
+                    }, 
+                  ]
+                },
+                {
+                  text: "What is the right translation of Wessen Hund ist das?",
+                  responses: [
+                    { 
+                      text: 'Where is the dog?'
+                    }, 
+                    { 
+                      text: 'Which dog is it?'
+                    },
+                    { 
+                      text: 'Whose dog is it?', 
+                      correct: true
+                    }, 
+                  ]
+                }         
+              ]
+            };
+
+            new Vue({
+              el: '#app',
+              data: { 
+                  quiz: quiz,
+                  questionIndex: 0,
+                  userResponses: Array(quiz.questions.length).fill(false),
+              }, 
+
+              methods: {
+                //go to next question
+                next: function(){
+                  this.questionIndex++;
+                },
+                // Return "true" count in userResponses
+                score: function() {
+                  return this.userResponses.filter(function(val) { return val }).length;
+                },
+              }
+            });
+         });
+    </script>
+
+
+
+
+
+  </body>
+</html>

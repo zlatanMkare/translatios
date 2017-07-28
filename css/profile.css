@@ -1,0 +1,14 @@
+.profile-section {
+  padding-top: 120px;
+}
+.profile-section .w3-card .prof-title h4 img {
+  width: 30px;
+  float: right;
+}
+.profile-section .profile-side .alert {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+}
+.profile-section .profile-side .alert i {
+  font-size: 25px;
+}

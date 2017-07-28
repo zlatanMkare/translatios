@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Hind');
 .sec-title {
   padding: 40px 0;
 }
@@ -17,6 +18,10 @@ a:hover {
     justify-content: space-between;
   }
 }
+body,
+p {
+  font-family: 'Hind', sans-serif !important;
+}
 .navbar-default {
   background: linear-gradient(to right, #b24592, #f15f79);
   border-color: transparent;
@@ -29,10 +34,10 @@ a:hover {
   padding: 10px 20px;
 }
 .navbar-default .navbar-nav .open .dropdown-menu li a:hover {
-  background: #ea5c7c;
+  background-color: #ea5c7c;
 }
 .navbar-default .navbar-nav .open .dropdown-menu li a:focus {
-  background: #ea5c7c;
+  background-color: #ea5c7c;
 }
 .navbar-default .navbar-brand img {
   margin-top: -18px;
